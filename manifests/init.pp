@@ -14,7 +14,7 @@ class ldap (
   $package_name          = $::ldap::params::package_name,
   $service_name          = $::ldap::params::service_name,
   $dependencies          = $::ldap::params::dependencies,
-  $ldap_connection_exist = true,
+  $ldap_connection_exist = undef,
   $ldap                  = false,
   $ldapauth              = false,
   $ldaptls               = false,
@@ -43,6 +43,9 @@ case $::osfamily {
       }else {
         $ldapbasedn_flg = "--ldapbasedn \"${ldapbasedn}\""
       }
+      #Converting variable into boolean
+      $ldap_connection_exist_flg = str2bool($ldap_connection_exist)
+
       $ldap_flg = $ldap ? {
         true     => '--enableldap',
         default  => '--disableldap',
