@@ -90,9 +90,14 @@ case $::osfamily {
     fail("$::osfamily is not supported")
   }
 }
+  # Adding relationship to the class
+  contain ldap::install
+  contain ldap::config
+  contain ldap::service
+  contain ldap::params
 
-  class { '::ldap::install': } ->
-  class { '::ldap::config': } ~>
-  class { '::ldap::service': } ->
-  Class['::ldap']
+  Class['::ldap::install']
+  -> Class['::ldap::config']
+  ~> Class['::ldap::service']
+
 }
