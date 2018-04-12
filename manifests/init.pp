@@ -59,10 +59,10 @@ case $::osfamily {
         if !$cacerts {
           fail('The cacerts parameter is required when ldaptls set to true')
         }
-        $ldaptls_flg = $ldaptls ? {
-          true     => '--enableldaptls',
-          default  => '--disableldaptls',
-        }
+      }
+      $ldaptls_flg = $ldaptls ? {
+        true     => '--enableldaptls',
+        default  => '--disableldaptls',
       }
       $md5_flg = $md5 ? {
         true     => '--enablemd5',
