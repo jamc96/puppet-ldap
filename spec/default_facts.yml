@@ -6,3 +6,4 @@ concat_basedir: ""
 ipaddress: "172.16.254.254"
 is_pe: false
 macaddress: "AA:AA:AA:AA:AA:AA"
+ldap_connection: true
