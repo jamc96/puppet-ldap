@@ -2,11 +2,11 @@
 #
 # This class is called from ldap for service config.
 #
-class ldap::config {
+class ldap::config inherits ldap {
   # Making the configuration with authconfig
-  exec { 'ldap_command_auth':
-    command     => $::ldap::ldap_updt_command,
+  exec { 'authconfig_ldap':
+    command     => $::ldap::authconfig_ldap,
     path        => '/usr/bin:/usr/sbin:/bin:/usr/local/bin',
-    refreshonly => $::ldap::ldap_connection_exist_flg,
+    refreshonly => $::ldap_connection,
   }
 }
