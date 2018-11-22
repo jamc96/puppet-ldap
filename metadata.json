@@ -1,12 +1,12 @@
 {
   "name": "jamc96-ldap",
   "version": "0.1.0",
-  "author": "module",
-  "summary": "",
+  "author": "jamc96",
+  "summary": "Module to manage ldap client set up",
   "license": "Apache-2.0",
-  "source": "",
-  "project_page": "",
-  "issues_url": "",
+  "source": "https://github.com/jamc96/puppet-ldap.git",
+  "project_page": "https://github.com/jamc96/puppet-ldap.git",
+  "issues_url": "https://github.com/jamc96/puppet-ldap/issue",
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
