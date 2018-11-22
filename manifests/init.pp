@@ -25,8 +25,8 @@ class ldap (
   Boolean $ldap                              = true,
 ){
   # default variables
-  $ldapserver_flg = "ldapserver \"${ldapserver}\""
-  $ldapbasedn_flg = "ldapbasedn \"${ldapbasedn}\""
+  $ldapserver_flg = "ldapserver=\"${ldapserver}\""
+  $ldapbasedn_flg = "ldapbasedn=\"${ldapbasedn}\""
   $ldap_flg = bool2str($ldap,'enableldap', 'disableldap')
   $ldapauth_flg = bool2str($ldapauth, 'enableldapauth', 'disableldapauth')
   $ldaptls_flg = bool2str($ldaptls, 'enableldaptls', 'disableldaptls')
