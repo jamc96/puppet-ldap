@@ -25,5 +25,18 @@ describe 'ldap' do
       }
       it { is_expected.to contain_service('nslcd').with(ensure: 'running') }
     end
+    context "with ldaptls => true" do
+      let(:facts) { os_facts }
+      let(:params) { { 'ldaptls' => true, 'key' => 'https://ldap.com/key.pem' } }
+
+      it {
+        is_expected.to contain_file('/etc/openldap/cacerts/server.pem').with(
+          ensure: 'present',
+          owner: 'root',
+          group: 'root',
+          source: 'https://ldap.com/key.pem',
+        )
+      }
+    end
   end
 end
