@@ -21,8 +21,8 @@ class ldap (
   Boolean $shadow                            = true,
   Boolean $mkhomedir                         = true,
   Boolean $savebackup                        = true,
-  Optional[string] $cacerts                  = undef,
   Boolean $ldap                              = true,
+  Optional[String] $key                      = undef
 ){
   # default variables
   $ldapserver_flg = "ldapserver=\"${ldapserver}\""
@@ -35,10 +35,9 @@ class ldap (
   $mkhomedir_flg = bool2str($mkhomedir, 'enablemkhomedir', 'disablekhomedir')
   $savebackup_flg = bool2str($savebackup, 'savebackup', 'savebackup')
   # enable TLS for authentication
-  if $ldaptls {
-    unless $cacerts {
-      fail('The cacerts parameter is required when ldaptls set to true')
-    }
+  $key_ensure = $ldaptls ? {
+    true => 'present',
+    default => 'absent',
   }
   # concat config array
   $config_array = [$shadow_flg, $md5_flg, $ldap_flg, $ldapauth_flg, $ldapserver_flg, $ldapbasedn_flg, $ldaptls_flg, $mkhomedir_flg].join(' --')
