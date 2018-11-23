@@ -8,12 +8,16 @@ class ldap::config inherits ldap {
     unless $ldap::key {
       fail('key parameter is required to enable TLS')
     }else {
-        file { '/etc/openldap/cacerts/server.pem':
-        ensure => $ldap::key_ensure,
-        owner  => 'root',
-        group  => 'root',
-        source => $ldap::key,
-        notify => Exec['authconfig_ldap'],
+        file { $ldap::cacert_dir:
+          ensure => directory,
+        }
+        file { "${ldap::cacert_dir}/server.pem":
+          ensure  => $ldap::key_ensure,
+          owner   => 'root',
+          group   => 'root',
+          source  => $ldap::key,
+          notify  => Exec['authconfig_ldap'],
+          require => File[$ldap::cacert_dir],
       }
     }
   }

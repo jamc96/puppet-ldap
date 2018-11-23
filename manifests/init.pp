@@ -22,7 +22,8 @@ class ldap (
   Boolean $mkhomedir                         = true,
   Boolean $savebackup                        = true,
   Boolean $ldap                              = true,
-  Optional[String] $key                      = undef
+  Optional[String] $key                      = undef,
+  String $cacert_dir                         = '/etc/openldap/cacerts'
 ){
   # default variables
   $ldapserver_flg = "ldapserver=\"${ldapserver}\""
