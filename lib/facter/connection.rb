@@ -6,7 +6,7 @@ Facter.add('ldap_connection') do
     user = Facter::Util::Resolution.exec('/usr/bin/env id Admin')
     # validate connection
     if user
-      (user.split(' ').any? { |key| key =~ %r{/^uid=(\d+)/} }) ? true : false
+      (user.split(' ').any? { |key| key = %r{/^uid=(\d+)/} }) ? true : false
     end
   end
 end
