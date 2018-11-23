@@ -6,7 +6,7 @@ class ldap::config inherits ldap {
   # enable TLS
   if $ldap::ldaptls {
     unless $ldap::key {
-      fail('key parameter is required to enable TLS');
+      fail('key parameter is required to enable TLS')
     }else {
         file { '/etc/openldap/cacerts/server.pem':
         ensure => $ldap::key_ensure,
