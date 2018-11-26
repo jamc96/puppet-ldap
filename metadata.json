@@ -1,6 +1,6 @@
 {
   "name": "jamc96-ldap",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "jamc96",
   "summary": "Module to manage ldap client set up",
   "license": "Apache-2.0",
